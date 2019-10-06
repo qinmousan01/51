@@ -1,0 +1,21 @@
+.peoplenum {
+    margin-left: 20px;
+
+}
+
+.two {
+    margin-bottom: 20px;
+    color: red;
+}
+.head{
+    margin: 120px 8%;
+}
+.information{
+    height: 200px;
+    background-color: #ccc;
+    font-size: 20px;
+    color:white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    
+}

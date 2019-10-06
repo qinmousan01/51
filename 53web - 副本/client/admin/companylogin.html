@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div class="title">
+        <img src="https://img05.51jobcdn.com/im/2016/logo/logo_white.png" alt="">
+        <h1>招人才无忧</h1>
+    </div>
+    <div class="login">
+        <div>
+            <span>企业名字:</span><input type="text"><br>
+        </div>
+        <div class="passworddiv">
+            <span>企业密码:</span><input type="password">
+        </div>
+        <button onclick="companylogin()">企业登录</button>
+    </div>
+    <script src="../utils/Ajax.js"></script>
+    <script>
+        function companylogin(){
+            let companyname = document.getElementsByTagName("input")[0].value;
+            let companypassword = document.getElementsByTagName("input")[1].value;
+
+            let ajax = new Ajax();
+            ajax.post('http://localhost:8888/companylogin', {
+                name:companyname,
+                password:companypassword,
+                  
+                }, function (data) { 
+                    console.log(data)
+                    let datastr = JSON.stringify(data);
+                    localStorage.setItem('company',datastr);
+
+                    console.log(localStorage.getItem('company'))
+                    if(data[0].company_password==companypassword){
+                        alert("登录成功")
+                        window.location.href='./publish.html'
+                    }else{
+                        
+                        alert("用户名或者密码错误")
+                    }
+                })
+        }
+    
+    
+    
+    </script>
+</body>
+
+</html>

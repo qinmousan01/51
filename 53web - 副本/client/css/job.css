@@ -1,0 +1,64 @@
+.content {
+    width: 60%
+}
+
+.addr {
+    display: flex;
+    width: 80%;
+    padding: 30px 0;
+    color: #666666;
+}
+
+.companyname {
+    font-weight: bold;
+    font-size: 20px;
+}
+.companyname:hover{
+    color: #ff6000;
+}
+.address {
+    padding-right: 30px;
+}
+
+.tags {
+    display: flex;
+    /* padding:0px 0; */
+    font-size: 14px;
+    color: #ff6000;
+
+}
+
+.tagsname {
+    margin-right: 30px;
+    background-color: #fff2e3;
+}
+.demand{
+    width: 800px;
+    height: 130px;
+    background-color: #ccc;
+    font-size: 18px;
+    border-radius: 10px;
+
+}
+.description{
+    width: 800px;
+    height: 130px;
+    background-color: #ccc;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.demand1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    
+}
+.all{
+    margin: 40px 0 0 80px;
+}
+.jobpost{
+    margin: 30px 0;
+    color: red;
+    font-size: 30px;
+    font-weight: bolder;
+}

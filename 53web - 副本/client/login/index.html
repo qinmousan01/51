@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="title">
+        <img src="https://img05.51jobcdn.com/im/2016/logo/logo_white.png" alt="">
+        <h1>找工作无忧</h1>
+    </div>
+
+    <div class="one">
+        <input type="text" placeholder="请输入职位">
+        <button>搜索</button>
+    </div>
+    <div class="content">
+        <div class="two">
+            <div class=" jobname">
+                <div>职位名称</div>
+                <div class="address">工作地点</div>
+            </div>
+        </div>
+        <div class="three">
+            <div class="companyname">
+                <div>公司名字</div>
+            </div>
+            <!-- <div class="companyname">
+                <div>公司名</div>
+            </div> -->
+        </div>
+    </div>
+    <button class="register" onclick="register()">公司注册</button>
+    <button class="register login" onclick="login()">公司登录</button>
+    <script src="../utils/Ajax.js"></script>
+    <script>
+        document.getElementsByTagName('button')[0].onclick = function () {
+            document.getElementsByClassName("two")[0].innerHTML = `<div class=" jobname">
+                <div>职位名称</div>
+                <div>工作地点</div>
+            </div>`
+            document.getElementsByClassName("three")[0].innerHTML = `<div class="companyname">
+                                                                                    <div>公司名字</div>
+                                                                                </div>`
+            let value = document.getElementsByTagName("input")[0].value;
+            let ajax = new Ajax();
+            if (value.length == 0) {
+                alert("请输入职位")
+
+            } else {
+                // if (value == '前端') {
+                let ajax = new Ajax();
+                ajax.post('http://localhost:8888/check', {
+                    name: value
+                }, function (data) {
+                    if (data.length == 0) {
+                        alert('未搜索到职位,请重新输入')
+                        document.getElementsByTagName("input")[0].value = '';
+                    }
+                    console.log(data)
+                    data = JSON.stringify(data)
+                    console.log(data)
+                    localStorage.setItem('ob1', data)
+                    let ob = JSON.parse(data)
+                    // console.log(localStorage.getItem('ob1'))
+
+                    for (let i = 0; i < ob.length; i++) {
+                        document.getElementsByClassName("two")[0].innerHTML += `<div class="jobname jobname1">
+                                                                            <div class="jobname33" id=${ob[i].company_id} onclick= jobdetails(${ob[i].id})>${ob[i].job_name}</div>
+                                                                            <div class="address">${ob[i].job_address}</div>
+                                                                        </div>`
+                        document.getElementsByClassName("three")[0].innerHTML += `<div class="companyname companyname1">
+                                                                                            <div onclick=companydetails(${ob[i].company_id})>${ob[i].company_name}</div>
+                                                                                        </div>`
+                    }       
+                })
+            }
+        }
+
+
+        function jobdetails(a) {
+            localStorage.setItem('key', a)
+            console.log(localStorage.getItem('key'))
+            window.location.href = "./job.html"
+
+        }
+        function companydetails(b) {
+            localStorage.setItem('key', b)
+            console.log(localStorage.getItem('key'))
+            window.location.href = "./company.html"
+        }
+        function register() {
+            window.location.href = "../admin/admin.html"
+        }
+        function login() {
+            window.location.href = "../admin/companylogin.html"
+        }
+    </script>
+</body>
+
+</html>

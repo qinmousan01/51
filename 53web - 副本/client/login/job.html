@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>职位详情</title>
+    <link rel="stylesheet" href="../css/job.css">
+</head>
+
+<body>
+    <div class="all">
+        <div class="content">
+            <div class="companyname">···主人呢···走丢了</div>
+            <div class="addr">
+                <div class="address">成都-高新区</div>
+                <span class="experience">1</span><span>年经验</span>
+            </div>
+            <div class="tags">
+                
+            </div>
+        </div>
+        <div class="jobpost">前端工程师</div>
+        <div>
+            <div class="demand1">岗位要求</div>
+            <div class="demand"></div>
+
+        </div>
+        <div>
+            <div class="demand1">岗位职责</div>
+            <div class="description"></div>
+
+        </div>
+    </div>
+</body>
+<script src="../utils/Ajax.js"></script>
+<script>
+    
+    let ob = JSON.parse(localStorage.getItem('ob1'));
+    // console.log(ob)
+    console.log(localStorage.getItem('key'))//job.id
+
+    //新加
+    let index = 0;
+    for(let i = 0 ;i<ob.length;i++){
+        if(ob[i].id == localStorage.getItem('key')){
+            index = i
+        }
+    }
+    console.log(index)
+
+    document.getElementsByClassName("companyname")[0].innerHTML=ob[index].company_name;
+    document.getElementsByClassName("address")[0].innerHTML = ob[index].company_address;
+    document.getElementsByClassName("experience")[0].innerHTML = ob[index].experience;
+    document.getElementsByClassName("demand")[0].innerHTML = ob[index].demand;
+    document.getElementsByClassName("description")[0].innerHTML = ob[index].description
+    document.getElementsByClassName("jobpost")[0].innerHTML = ob[index].job_name;
+
+
+    let ajax = new Ajax();
+    console.log(localStorage.getItem('key'))
+    ajax.post('http://localhost:8888/tags', {
+                    id:localStorage.getItem('key')
+                }, function (data) {
+                    console.log(data)
+
+                    for(let i = 0 ;i<data.length;i++){
+                        document.getElementsByClassName("tags")[0].innerHTML+=`<div class="tagsname">${data[i].name}</div>`
+                        
+                    }
+
+                })
+            
+
+
+    document.getElementsByClassName("companyname")[0].onclick =function(){
+            window.location.href='./company.html'
+        }
+</script>
+
+</html>

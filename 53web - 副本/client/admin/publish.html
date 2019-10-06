@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            width: 60%;
+            height: 500px;
+            margin-top: 100px;
+            margin-left: 10%;
+            /* background-color: #ccc; */
+        }
+
+        .namecompany {
+            font-size: 30px;
+            font-weight: bolder;
+
+        }
+
+        .addresscompany {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .button {
+            width: 140px;
+            height: 40px;
+            background: #ff6000;
+            text-align: center;
+            line-height: 40px;
+            color: antiquewhite;
+            font-size: 20px;
+            border-radius: 15px;
+            margin-left: 50%;
+            margin-top: 50px;
+        }
+        .button:hover{
+            background-color: #fff;
+            color: #ff6000;
+            font-weight: bolder;
+        }
+        .hello {
+            font-size: 30px;
+            color: red;
+            margin-bottom: 20px;
+        }
+        .title{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="title">
+            <img src="https://img05.51jobcdn.com/im/2016/logo/logo_white.png" alt="">
+            
+        </div>
+        <div class="hello">您好:</div>
+        <div class="namecompany">成都法码斯科技有限公司</div>
+        <div class="addresscompany">高新区孵化园9号园区E座4楼 (邮编：610000)</div>
+
+        <div class="button" onclick="publish()">发布职位</div>
+
+    </div>
+    <script>
+        console.log(localStorage.getItem('company'))
+        let obj = JSON.parse(localStorage.getItem('company'));
+        console.log(obj[0].company_name)
+        
+        document.getElementsByClassName('namecompany')[0].innerHTML = obj[0].company_name;
+        document.getElementsByClassName('addresscompany')[0].innerHTML = obj[0].company_address;
+
+        function publish(){
+            window.location.href="./jobregister.html"
+        }
+    </script>
+</body>
+
+</html>

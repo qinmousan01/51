@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>职位发布</title>
+    <link rel="stylesheet" href="../css/jobregister.css">
+</head>
+
+<body>
+    <div class="demo">
+        <div>
+            <img src="https://img05.51jobcdn.com/im/2016/logo/logo_white.png" alt="">
+        </div>
+        <h1>职位发布</h1>
+        <div class="namediv">
+            <span>职位名称:</span>
+            <input type="text" class="companyname" name="" id="">
+
+        </div>
+
+        <div class="typediv">
+            <span>工作地点:</span>
+            <input class="addressinput" type="text">
+        </div>
+
+        <div class="numdiv">
+            <span>要求经验:</span>
+            <input type="text" class="numinput">年
+        </div>
+        <div class="infordiv">要求技能:</div>
+        <textarea name="" id="" cols="60" rows="4"></textarea>
+        <div class="adddiv">职责内容:</div>
+        <textarea name="" id="" cols="60" rows="4"></textarea>
+        <br>
+        <button onclick="toregister()">提交注册</button>
+        <script src="../utils/Ajax.js"></script>
+        <script>
+            function toregister() {
+
+                console.log(localStorage.getItem('company'))
+                let obj = JSON.parse(localStorage.getItem('company'));
+                console.log(obj[0].id)
+
+                let name = document.getElementsByClassName('companyname')[0].value;
+                let address = document.getElementsByClassName('addressinput')[0].value;
+                let experience = document.getElementsByClassName('numinput')[0].value;    
+                let demand = document.getElementsByTagName('textarea')[0].value;
+                let description = document.getElementsByTagName('textarea')[0].value;
+                let company_id = obj[0].id;
+
+                let ajax = new Ajax();
+                ajax.post('http://localhost:8888/jobregister', {
+                name:name,
+                address:address,
+                experience:experience,
+                demand:demand,
+                description:description,
+                company_id:company_id
+                }, function (data) { 
+
+                    console.log(data)
+                    if (data.code == 1) {
+                        alert(data.msg)
+                        // confirm(data.msg + "确认跳转企业登录?")
+                        // window.location.href = './companylogin.html'
+                    }
+            })
+        }
+
+
+
+
+
+        </script>
+</body>
+
+</html>

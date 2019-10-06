@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.title{
+margin-left: 4%;
+margin-right: 24%;
+margin-top: 20px;
+padding-bottom: 30px;
+border-bottom: 1px solid #ff6000;
+color:#ff6000;
+}
+.two {
+    width: 60%;
+    margin-top: 40px;
+    margin-left: 4%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    font-size: 30px;
+    
+}
+/* .address{
+    padding-right: 120px;
+    padding-left: 120px;
+} */
+.jobname {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.jobname1 {
+    color: #ff6000;
+    font-size: 20px;
+}
+
+.companyname {
+    width: 40%;
+}
+
+.one {
+    width: 80%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+input {
+    width: 60%;
+    height: 80px;
+    font-size: 40px;
+    color: crimson;
+}
+
+button {
+    width: 20%;
+    height: 80px;
+    border: none;
+    background-color: #ff6000;
+    font-size: 40px;
+    color: aliceblue;
+}
+
+.content {
+    display: flex;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.three {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.companyname {
+    /* margin-top: 40px; */
+    width: 100%;
+    font-size: 30px;
+}
+
+.companyname1 {
+    color: #ff6000;
+    font-size: 20px;
+}
+/* .address:hover{
+    color: greenyellow;
+} */
+.jobname33:hover{
+    color: greenyellow;
+
+}
+.companyname1:hover{
+    color: greenyellow;
+
+}
+.register{
+    position: absolute;
+    right: 24%;
+    top: 0;
+    width: 120px;
+    height: 60px;
+    font-size: 22px;
+    color: aliceblue;
+    background-color: #ccc;
+    border-radius: 30px;
+    outline: none;
+}
+.register:hover{
+    text-decoration: underline;
+    color: #ff6000;
+    background-color: #fff;
+}
+.login{
+    top: 70px;
+}

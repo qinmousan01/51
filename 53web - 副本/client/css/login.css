@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    margin-left: 4%;
+    margin-right: 24%;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ff6000;
+    color: #ff6000;
+}
+
+.login {
+    font-size: 28px;
+    color: crimson;
+    margin-top: 40px;
+    margin-left: 8%;
+    margin-right: 24%;
+    position: relative;
+    height: 220px;
+}
+
+input {
+    width: 400px;
+    height: 40px;
+    outline: none;
+    font-size: 28px;
+}
+.passworddiv{
+    margin-top: 20px;
+}
+button{
+
+    width: 140px;
+    height: 60px;
+    background-color: #ff6000;
+    outline: none;
+    color: aliceblue;
+    font-size: 26px;
+    border-radius: 10px;
+    line-height: 40px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}

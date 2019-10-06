@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公司信息</title>
+    <link rel="stylesheet" href="../css/company.css">
+</head>
+
+<body>
+    <div class="head">
+        <h2>成都感触网络科技有限公司</h2>
+        <div class="two">
+            <span class="companytype">民营公司</span>
+            <span class="peoplenum">50</span><span>人</span>
+        </div>
+        <div class="information">
+            我们是一家专注于手机游戏的开发和运营的创业公司，由一群在互联网行业有丰富经验的专业人士组成，公司拥有追求伟大与卓越的梦想，拥有先进的开发理念，成熟的技术，独特而强烈的团队文化。</div>
+        <div>
+            <span>公司地址:</span>
+            <span class="address">成都市高新区孵化园9号楼F座3楼</span><span>(邮编：610000)</span>
+        </div>
+    </div>
+
+
+    <script src="../utils/Ajax.js"></script>
+    <script>
+        // console.log(localStorage.getItem('ob1'))
+        console.log(localStorage.getItem('key'))
+        let ob = JSON.parse(localStorage.getItem('ob1'));
+        // console.log(ob[localStorage.getItem('key')].company_name)
+
+        //新加
+        let index = 0;
+        for (let i = 0; i < ob.length; i++) {
+            if (ob[i].id == localStorage.getItem('key')) {
+                index = i
+            }
+        }
+        console.log(index)
+
+        if (ob[index].type == 1) {
+            ob[index].type = '国营企业'
+        } else if (ob[index].type == 2) {
+            ob[index].type = "民营企业"
+        } else if (ob[index].type == 3) {
+            ob[index].type = "合资企业"
+        } else if (ob[index].type == 4) {
+            ob[index].type = "外资企业"
+        }
+        // console.log(ob)
+        // console.log(localStorage.getItem('key'))
+        document.getElementsByTagName("h2")[0].innerHTML = ob[index].company_name;
+        document.getElementsByClassName("companytype")[0].innerHTML = ob[index].type;
+        document.getElementsByClassName("peoplenum")[0].innerHTML = ob[index].people_number;
+        document.getElementsByClassName("information")[0].innerHTML = ob[index].information;
+        document.getElementsByClassName("address")[0].innerHTML = ob[index].company_address;
+
+    </script>
+</body>
+
+</html>
